@@ -2,6 +2,7 @@
   "name": "react_step_form",
   "version": "0.1.0",
   "private": true,
+  "homepage": ".",
   "dependencies": {
     "axios": "^0.21.0",
     "install": "^0.13.0",
