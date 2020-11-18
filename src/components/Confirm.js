@@ -3,9 +3,15 @@ import axios from 'axios';
 import Emoji from './utils/Emogi';
 
 export class Confirm extends Component {
-  
+  state = {
+    btn_disabled : false
+  }
   continue = e => {
     e.preventDefault();
+    this.setState({
+      btn_disabled : true
+    });
+    
     // PROCESS FORM //
     const {
       values: { 
@@ -25,7 +31,7 @@ export class Confirm extends Component {
       }
     } = this.props;
 
-    axios.post('http://127.0.0.1:5000/send', {
+    axios.post('http://127.0.0.1:8080/send', {
       service : service,
       reform: reform,
       workday: workday,
@@ -40,19 +46,18 @@ export class Confirm extends Component {
       note_client:note_client,
       baby_sister: baby_sister
       })
-        .then((res) => {
+        .then((response) => {
           this.props.nextStep();
             //Perform Success Action
-            //console.log(this.data)
+            //console.log(response)
         })
-        .catch((error, res) => {
+        .catch((error) => {
+          console.log("error: "+error);
+          //console.log(res)
             // error.response.status Check status code
             this.props.failStep();
             
-        }).finally(() => {
-            //Perform action in always
-            //console.log(this.data)
-        });
+        })
     
   };
 
@@ -144,8 +149,19 @@ export class Confirm extends Component {
           color="primary"
           variant="contained"
           onClick={this.continue}
-        ><Emoji symbol="↗"/>Enviar la solicitud del servicio</button>
+          disabled={this.state.btn_disabled}
+        >Enviar la solicitud del servicio
+
+        {this.state.btn_disabled===true ? 
+        <span className="spinner-border ml-4" role="status">
+          <span className="sr-only">Loading...</span>
+        </span>
+          :('')
+        }
+          
+        </button>
       </div>
+      
     </div>
 
     );

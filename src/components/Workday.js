@@ -55,7 +55,6 @@ export class Workday extends Component {
   }
   
   pushReformName = (value, bool) =>{
-      console.log(value + " " + bool)
     //capturamos 'reform' del componente padre
     let {reform} = this.props.values;
 

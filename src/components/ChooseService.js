@@ -12,7 +12,6 @@ export class ChooseService extends Component {
     this.props.nextStep();
   };
   render() {
-    console.log(this.props.values.email_client_send)
     const { values} = this.props;
     //
     //SWTICH PARA EVALUAR QUE SERVICIO SE HA ELEGIDO

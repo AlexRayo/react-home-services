@@ -146,21 +146,13 @@ export class Main extends Component {
         );
       case 6:
         return <Success />;
-      case 7:
-        return <Fail />;
+
+        case 7:
+          return <Fail />;
+
       default:
         return (
-          <div className="col-12 col-md-8 col-lg-6 py-4 mx-auto border">
-          <HeaderDetails values={values}/>
-            <ChooseService
-              nextStep={this.nextStep}
-              prevStep={this.prevStep}
-              handleChange={this.handleChange}
-              serviceName={this.serviceName}
-              reformName={this.reformName}
-              values={values}
-            />
-          </div>
+          <Success />       
         );
     }
   }
